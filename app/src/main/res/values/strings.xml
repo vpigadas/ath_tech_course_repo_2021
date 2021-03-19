@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Ath Tech Course</string>
+    <string name="developer_name">Pigadas Vassilis</string>
+    <string name="login_to_our_service">Login to our Service:</string>
+    <string name="please_enter_your_email">Please enter your email...</string>
+    <string name="please_enter_your_password">Please enter your password...</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_login">Login</string>
+
 </resources>
