@@ -1,11 +1,44 @@
 package gr.athtech.athtech.course.json;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class JsonResponse {
+
+public class JsonResponse implements Serializable, Parcelable {
     private JsonImageResponse images;
     private List<String> change_keys;
+
+    protected JsonResponse(Parcel in) {
+        images = in.readParcelable(JsonImageResponse.class.getClassLoader());
+        change_keys = in.createStringArrayList();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(images, flags);
+        dest.writeStringList(change_keys);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<JsonResponse> CREATOR = new Creator<JsonResponse>() {
+        @Override
+        public JsonResponse createFromParcel(Parcel in) {
+            return new JsonResponse(in);
+        }
+
+        @Override
+        public JsonResponse[] newArray(int size) {
+            return new JsonResponse[size];
+        }
+    };
 
     public JsonImageResponse getImages() {
         return images;

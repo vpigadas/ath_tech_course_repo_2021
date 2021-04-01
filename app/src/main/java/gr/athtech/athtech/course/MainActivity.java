@@ -1,11 +1,15 @@
 package gr.athtech.athtech.course;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import gr.athtech.athtech.course.json.JsonResponse;
 
 public class MainActivity extends AbstractActivity {
 
@@ -16,6 +20,16 @@ public class MainActivity extends AbstractActivity {
 
     @Override
     void initLayout() {
+        Bundle parameter = getIntent().getExtras();
+        if (parameter != null) {
+            String name = parameter.getString("name");
+            int date = parameter.getInt("date");
+            JsonResponse json = (JsonResponse) parameter.getSerializable("json");
+            JsonResponse json1 = parameter.getParcelable("json1");
+            Log.i("DEMO", name);
+        }
+
+
         TextView text = findViewById(R.id.text_one_1);
         text.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +51,15 @@ public class MainActivity extends AbstractActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoTheLoginScreen();
+                Bundle parameter = new Bundle();
+                if (getIntent().getExtras() != null) {
+                    parameter.putAll(getIntent().getExtras());
+                }
+
+                Intent intent = new Intent();
+                intent.putExtras(parameter);
+                setResult(-1, intent);
+                finish();
             }
         });
 
@@ -62,6 +84,11 @@ public class MainActivity extends AbstractActivity {
 
     @Override
     void stopOperations() {
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

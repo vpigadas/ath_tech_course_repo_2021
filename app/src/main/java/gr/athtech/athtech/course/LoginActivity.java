@@ -1,8 +1,12 @@
 package gr.athtech.athtech.course;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,8 +45,20 @@ public class LoginActivity extends AbstractActivity {
                                 Log.i("COMM", response);
 
                                 JsonResponse json = new Gson().fromJson(response, JsonResponse.class);
+                                setDataToUI(json);
 
                                 Log.i("COMM", json.toString());
+
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
+                                Bundle parameter = new Bundle();
+                                parameter.putString("name", "Vassilis");
+                                parameter.putInt("date", 1);
+                                parameter.putSerializable("json", json);
+                                parameter.putParcelable("json1", json);
+
+                                intent.putExtras(parameter);
+                                startActivityForResult(intent, 5000);
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -53,9 +69,6 @@ public class LoginActivity extends AbstractActivity {
 
                 // Add the request to the RequestQueue.
                 queue.add(stringRequest);
-
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                startActivity(intent);
             }
         });
 
@@ -79,6 +92,20 @@ public class LoginActivity extends AbstractActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (data != null) {
+            Bundle parameter = data.getExtras();
+
+            String name = parameter.getString("name");
+            boolean bool = parameter.getBoolean("bool");
+
+            Log.i("ACT COMM", name);
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         //super.onBackPressed();
 
@@ -91,6 +118,10 @@ public class LoginActivity extends AbstractActivity {
 
     @Override
     void stopOperations() {
+
+    }
+
+    private void setDataToUI(JsonResponse json) {
 
     }
 }
