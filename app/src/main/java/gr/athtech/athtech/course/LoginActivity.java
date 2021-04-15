@@ -1,11 +1,11 @@
 package gr.athtech.athtech.course;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import gr.athtech.athtech.course.listview.ListViewActivity;
-import gr.athtech.athtech.course.recyclerView.RecyclerViewActivity;
+import gr.athtech.athtech.course.viewpager.ViewPagerActivity;
 
 public class LoginActivity extends AbstractActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -47,7 +47,14 @@ public class LoginActivity extends AbstractActivity {
 //                // Add the request to the RequestQueue.
 //                queue.add(stringRequest);
 
-                Intent intent = new Intent(LoginActivity.this, RecyclerViewActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ViewPagerActivity.class);
+                intent.putExtra("key", "value");
+
+                Bundle parameter = new Bundle();
+                parameter.putString("key", "value");
+
+                intent.putExtras(parameter);
+
                 startActivity(intent);
             }
         });

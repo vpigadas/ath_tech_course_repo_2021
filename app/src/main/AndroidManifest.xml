@@ -13,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AthTechCourse">
-        <activity android:name=".recyclerView.RecyclerViewActivity"></activity>
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
+            android:label="@string/title_activity_view_pager"
+            android:theme="@style/Theme.AthTechCourse.NoActionBar"></activity>
+        <activity android:name=".DemoFragmentActivity" />
+        <activity android:name=".recyclerView.RecyclerViewActivity" />
         <activity android:name=".listview.ListViewActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
