@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".OurApplication"
@@ -14,19 +16,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AthTechCourse">
         <activity
-            android:name=".viewpager.ViewPagerActivity"
-            android:label="@string/title_activity_view_pager"
-            android:theme="@style/Theme.AthTechCourse.NoActionBar"></activity>
-        <activity android:name=".DemoFragmentActivity" />
-        <activity android:name=".recyclerView.RecyclerViewActivity" />
-        <activity android:name=".listview.ListViewActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+            android:name=".storage.StorageActivity"
+            android:label="@string/title_activity_storage"
+            android:theme="@style/Theme.AthTechCourse.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
+            android:label="@string/title_activity_view_pager"
+            android:theme="@style/Theme.AthTechCourse.NoActionBar" />
+        <activity android:name=".DemoFragmentActivity" />
+        <activity android:name=".recyclerView.RecyclerViewActivity" />
+        <activity android:name=".listview.ListViewActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity">
+
         </activity>
     </application>
 
