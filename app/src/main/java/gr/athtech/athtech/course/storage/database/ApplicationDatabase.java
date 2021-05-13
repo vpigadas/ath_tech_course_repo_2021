@@ -7,4 +7,6 @@ import androidx.room.RoomDatabase;
 public abstract class ApplicationDatabase extends RoomDatabase {
 
     public abstract MoviesDAO getMovieDao();
+
+
 }

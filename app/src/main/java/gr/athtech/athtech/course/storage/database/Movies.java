@@ -1,5 +1,6 @@
 package gr.athtech.athtech.course.storage.database;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,8 +8,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "movies")
 public class Movies {
 
-    @PrimaryKey
-    @ColumnInfo(name = "name")
+    @PrimaryKey  @ColumnInfo(name = "name") @NonNull
     private String name;
     @ColumnInfo(name = "photo_url")
     private String photoUrl;

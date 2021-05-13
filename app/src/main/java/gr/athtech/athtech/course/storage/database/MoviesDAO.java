@@ -30,4 +30,7 @@ public interface MoviesDAO {
     @Query("SELECT * FROM movies")
     List<Movies> getAll();
 
+    @Query("SELECT * FROM movies LIMIT 1")
+    Movies getFirst();
+
 }
